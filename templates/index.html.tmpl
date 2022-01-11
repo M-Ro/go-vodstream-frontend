@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/wasm_exec.js"></script>
+
+    <script>
+      const go = new Go();
+      WebAssembly.instantiateStreaming(fetch("/app.wasm"), go.importObject).then((result) => {
+        go.run(result.instance);
+      });
+    </script>
+
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/app.css?ver=x.x.x">
+  </head>
+  <body>
+    <p>{{.Response}}</p>
+  </body>
+</html>
