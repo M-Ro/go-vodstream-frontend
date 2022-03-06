@@ -1,0 +1,15 @@
+{
+  "name": "go-vodstream-frontend-styles",
+  "version": "0.0.1",
+  "description": "Vodstream CSS",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild.js"
+  },
+  "author": "Michael Rodenhurst <mrodenhurst1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "esbuild": "^0.14.25",
+    "esbuild-sass-plugin": "^2.2.4"
+  }
+}
