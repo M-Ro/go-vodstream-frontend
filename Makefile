@@ -2,19 +2,16 @@ ENTRY=src/app.go
 TARGET=app
 
 COMPILER=go build
-FLAGS=CGO_ENABLED=0 GOOS=js GOARCH=wasm
+FLAGS=GOOS=js GOARCH=wasm
 GOROOT=$(shell go env GOROOT)
 
-all: $(TARGET) copywasm copytemplates
+all: wasm server
 
-app:
+wasm:
 	$(FLAGS) go build -o build/$(TARGET).wasm $(ENTRY)
 
-copywasm:
-	cp "$(GOROOT)/misc/wasm/wasm_exec.js" build
-
-copytemplates:
-	cp templates/* build
+server:
+	go build -o build/$(TARGET) $(ENTRY)
 
 clean:
 	rm -f build/*
